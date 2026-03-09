@@ -13,7 +13,10 @@ protocol RNBarLineChartBaseManager {
 extension RNBarLineChartBaseManager {
     func _moveViewToX(_ reactTag: NSNumber, xValue: NSNumber) {
         _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
-            guard let view: RNBarLineChartViewBase = viewRegistry?[reactTag] as? RNBarLineChartViewBase,
+            guard
+                let view: RNBarLineChartViewBase =
+                    (viewRegistry?[reactTag] as? RNBarLineChartViewBase) ??
+                    (uiManager?.view(forReactTag: reactTag) as? RNBarLineChartViewBase),
                 let barLineChart = view.chart as? BarLineChartViewBase
             else {
                 return
@@ -24,7 +27,10 @@ extension RNBarLineChartBaseManager {
 
     func _moveViewTo(_ reactTag: NSNumber, xValue: NSNumber, yValue: NSNumber, axisDependency: NSString) {
         _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
-            guard let view: RNBarLineChartViewBase = viewRegistry?[reactTag] as? RNBarLineChartViewBase,
+            guard
+                let view: RNBarLineChartViewBase =
+                    (viewRegistry?[reactTag] as? RNBarLineChartViewBase) ??
+                    (uiManager?.view(forReactTag: reactTag) as? RNBarLineChartViewBase),
                 let barLineChart = view.chart as? BarLineChartViewBase
             else {
                 return
@@ -35,7 +41,10 @@ extension RNBarLineChartBaseManager {
 
     func _moveViewToAnimated(_ reactTag: NSNumber, xValue: NSNumber, yValue: NSNumber, axisDependency: NSString, duration: NSNumber) {
         _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
-            guard let view: RNBarLineChartViewBase = viewRegistry?[reactTag] as? RNBarLineChartViewBase,
+            guard
+                let view: RNBarLineChartViewBase =
+                    (viewRegistry?[reactTag] as? RNBarLineChartViewBase) ??
+                    (uiManager?.view(forReactTag: reactTag) as? RNBarLineChartViewBase),
                 let barLineChart = view.chart as? BarLineChartViewBase
             else {
                 return
@@ -46,7 +55,10 @@ extension RNBarLineChartBaseManager {
 
     func _centerViewTo(_ reactTag: NSNumber, xValue: NSNumber, yValue: NSNumber, axisDependency: NSString) {
         _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
-            guard let view: RNBarLineChartViewBase = viewRegistry?[reactTag] as? RNBarLineChartViewBase,
+            guard
+                let view: RNBarLineChartViewBase =
+                    (viewRegistry?[reactTag] as? RNBarLineChartViewBase) ??
+                    (uiManager?.view(forReactTag: reactTag) as? RNBarLineChartViewBase),
                 let barLineChart = view.chart as? BarLineChartViewBase
             else {
                 return
@@ -57,7 +69,10 @@ extension RNBarLineChartBaseManager {
 
     func _centerViewToAnimated(_ reactTag: NSNumber, xValue: NSNumber, yValue: NSNumber, axisDependency: NSString, duration: NSNumber) {
         _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
-            guard let view: RNBarLineChartViewBase = viewRegistry?[reactTag] as? RNBarLineChartViewBase,
+            guard
+                let view: RNBarLineChartViewBase =
+                    (viewRegistry?[reactTag] as? RNBarLineChartViewBase) ??
+                    (uiManager?.view(forReactTag: reactTag) as? RNBarLineChartViewBase),
                 let barLineChart = view.chart as? BarLineChartViewBase
             else {
                 return
@@ -68,7 +83,10 @@ extension RNBarLineChartBaseManager {
 
     func _fitScreen(_ reactTag: NSNumber) {
         _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
-            guard let view: RNBarLineChartViewBase = viewRegistry?[reactTag] as? RNBarLineChartViewBase,
+            guard
+                let view: RNBarLineChartViewBase =
+                    (viewRegistry?[reactTag] as? RNBarLineChartViewBase) ??
+                    (uiManager?.view(forReactTag: reactTag) as? RNBarLineChartViewBase),
                 let barLineChart = view.chart as? BarLineChartViewBase
             else {
                 return
@@ -79,7 +97,10 @@ extension RNBarLineChartBaseManager {
 
     func _highlights(_ reactTag: NSNumber, config: NSArray) {
         _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
-            guard let view: RNBarLineChartViewBase = viewRegistry?[reactTag] as? RNBarLineChartViewBase,
+            guard
+                let view: RNBarLineChartViewBase =
+                    (viewRegistry?[reactTag] as? RNBarLineChartViewBase) ??
+                    (uiManager?.view(forReactTag: reactTag) as? RNBarLineChartViewBase),
                 let barLineChart = view.chart as? BarLineChartViewBase
             else {
                 return
@@ -91,7 +112,9 @@ extension RNBarLineChartBaseManager {
     func _setDataAndLockIndex(_ reactTag: NSNumber, data: NSDictionary) {
         _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
             guard
-                let view = viewRegistry?[reactTag] as? RNBarLineChartViewBase
+                let view =
+                    (viewRegistry?[reactTag] as? RNBarLineChartViewBase) ??
+                    (uiManager?.view(forReactTag: reactTag) as? RNBarLineChartViewBase)
             else {
                 return
             }
@@ -102,7 +125,9 @@ extension RNBarLineChartBaseManager {
     func _addEntries(_ reactTag: NSNumber, data: NSArray) {
         _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
             guard
-                let view = viewRegistry?[reactTag] as? RNBarLineChartViewBase
+                let view =
+                    (viewRegistry?[reactTag] as? RNBarLineChartViewBase) ??
+                    (uiManager?.view(forReactTag: reactTag) as? RNBarLineChartViewBase)
             else {
                 return
             }
@@ -113,7 +138,9 @@ extension RNBarLineChartBaseManager {
     func _replaceDataSets(_ reactTag: NSNumber, data: NSArray) {
         _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
             guard
-                let view = viewRegistry?[reactTag] as? RNBarLineChartViewBase
+                let view =
+                    (viewRegistry?[reactTag] as? RNBarLineChartViewBase) ??
+                    (uiManager?.view(forReactTag: reactTag) as? RNBarLineChartViewBase)
             else {
                 return
             }
